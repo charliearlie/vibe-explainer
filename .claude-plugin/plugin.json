@@ -1,0 +1,5 @@
+{
+  "name": "vibe-explainer",
+  "description": "Generates visual change reports with Mermaid diagrams and plain-English explanations after every coding task. Built for vibe coders who need to understand what's happening in their project without reading code.",
+  "version": "1.0.0"
+}
