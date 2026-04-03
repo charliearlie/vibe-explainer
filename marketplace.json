@@ -1,0 +1,14 @@
+{
+  "name": "vibe-explainer",
+  "owner": {
+    "name": "CamberCo",
+    "url": "https://camberco.co.uk"
+  },
+  "plugins": [
+    {
+      "name": "vibe-explainer",
+      "description": "Generates visual change reports with Mermaid diagrams and plain-English explanations after every coding task. Built for vibe coders.",
+      "version": "1.0.0"
+    }
+  ]
+}

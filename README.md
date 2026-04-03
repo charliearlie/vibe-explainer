@@ -1,6 +1,6 @@
 # Vibe Explainer
 
-A Claude Code skill that generates visual change reports after every coding task. Built for vibe coders who build with AI and need to understand what's happening in their project without reading code.
+A Claude Code plugin that generates visual change reports after every coding task. Built for vibe coders who build with AI and need to understand what's happening in their project without reading code.
 
 ## What it does
 
@@ -29,39 +29,40 @@ Reports are saved to `docs/change-reports/` in your project so you can always lo
 
 ### Claude Code Plugin (recommended)
 
-If this repo is registered as a plugin marketplace:
+**Step 1:** Register the marketplace:
 
 ```
-/plugin marketplace add CamberCo/vibe-explainer
+/plugin marketplace add charliearlie/vibe-explainer
+```
+
+**Step 2:** Install the plugin:
+
+```
 /plugin install vibe-explainer@vibe-explainer
 ```
 
-Or install directly from GitHub:
-
-```
-/plugin install https://github.com/CamberCo/vibe-explainer
-```
+That's it. The skill will now activate automatically after coding tasks.
 
 ### Manual install
 
-Clone this repo and copy the skill folder into your Claude Code skills directory:
+If you prefer not to use the plugin system, clone and copy the skill folder directly:
 
 ```bash
-git clone https://github.com/CamberCo/vibe-explainer.git
-cp -r vibe-explainer/skills/vibe-explainer ~/.claude/skills/
+git clone https://github.com/charliearlie/vibe-explainer.git
+cp -r vibe-explainer/plugins/vibe-explainer/skills/vibe-explainer ~/.claude/skills/
 ```
 
 Or to add it to a specific project (so it's shared with anyone who clones the repo):
 
 ```bash
-cp -r vibe-explainer/skills/vibe-explainer your-project/.claude/skills/
+cp -r vibe-explainer/plugins/vibe-explainer/skills/vibe-explainer your-project/.claude/skills/
 ```
 
 ### Claude.ai upload
 
-1. Download this repo as a ZIP
+1. Download the `vibe-explainer.skill` file from [Releases](https://github.com/charliearlie/vibe-explainer/releases)
 2. Go to **Settings > Features > Skills**
-3. Upload the ZIP file
+3. Upload the file
 
 ### Recommended: Add a CLAUDE.md nudge
 
@@ -71,28 +72,32 @@ For the most consistent behaviour, add this line to your project's `CLAUDE.md`:
 After completing any coding task, always use the vibe-explainer skill to generate a change report before giving your final summary.
 ```
 
-## What's included
+## Repo structure
 
 ```
 vibe-explainer/
-├── .claude-plugin/
-│   └── plugin.json              # Plugin metadata
-├── skills/
+├── marketplace.json                          # Marketplace catalog
+├── plugins/
 │   └── vibe-explainer/
-│       ├── SKILL.md             # Core instructions
-│       └── references/
-│           ├── output-template.md   # Report structure template
-│           └── mermaid-patterns.md  # Diagram pattern library
-└── README.md
+│       ├── .claude-plugin/
+│       │   └── plugin.json                   # Plugin metadata
+│       └── skills/
+│           └── vibe-explainer/
+│               ├── SKILL.md                  # Core instructions
+│               └── references/
+│                   ├── output-template.md    # Report structure template
+│                   └── mermaid-patterns.md   # Diagram pattern library
+├── README.md
+└── LICENSE
 ```
+
+## Full project mapping
+
+Beyond change reports, you can ask Claude: "Map out my entire project" and it will generate a comprehensive `PROJECT-MAP.md` covering your file structure, component relationships, database schema, API routes, external integrations, and environment variables.
 
 ## Cross-agent compatibility
 
-This skill uses the open [Agent Skills](https://agentskills.io) standard (`SKILL.md` format), so it also works with Cursor, Gemini CLI, Codex CLI, and other compatible tools.
-
-## You can also ask for a full project map
-
-Beyond change reports, you can ask Claude: "Map out my entire project" and it will generate a comprehensive `PROJECT-MAP.md` covering your file structure, component relationships, database schema, API routes, external integrations, and environment variables.
+This skill uses the open [Agent Skills](https://agentskills.io) standard (`SKILL.md` format), so it also works with Cursor, Gemini CLI, Codex CLI, and other compatible tools. For manual install on those platforms, copy the `skills/vibe-explainer/` directory into the appropriate skills location for your tool.
 
 ## Built by
 
